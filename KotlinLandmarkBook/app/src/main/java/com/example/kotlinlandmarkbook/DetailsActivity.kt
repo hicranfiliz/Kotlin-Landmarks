@@ -16,14 +16,20 @@ class DetailsActivity : AppCompatActivity() {
 
         val intent = intent
         // casting: selectedLandmark'i al ve bunu Landmark objesi olara kaydet.
-        var selectedLandmak = intent.getStringExtra("landmarkName") as Landmark
+        //var selectedLandmak = intent.extras?.getSerializable("landmarkName") as Landmark
         // bunlari serializable gonderdigim icin buraya da serializable gelir. Bu bizim istemedigimiz bir durumdur.
         // Cunku artik name degiskenine ulasamam.Ama ulasip bunlari  binding.text diyip gosterebiliyim.
         // Bu yuzden casting kullanacagiz..
 
-        binding.nameText.text = selectedLandmak.name
-        binding.countryName2.text = selectedLandmak.country
-        binding.imageView.setImageResource(selectedLandmak.image)
+        // yine bu sekilde de veri aktarabiliriz.
+        var selectedLandmark = MySingleton.chosenLandmark
+
+        selectedLandmark?.let {
+            binding.nameText.text = it.name
+            binding.countryName2.text = it.country
+            binding.imageView.setImageResource(it.image)
+        }
+
 
     }
 }

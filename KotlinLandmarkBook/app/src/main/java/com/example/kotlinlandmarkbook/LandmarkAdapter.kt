@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinlandmarkbook.MySingleton.chosenLandmark
 import com.example.kotlinlandmarkbook.databinding.RecyclerRowBinding
 
 // Recycler view icin de adapter lazim. Sonucta bir baglama islemi burada da var.
@@ -42,8 +43,12 @@ class LandmarkAdapter(val landmarkList: ArrayList<Landmark>) :
     override fun onBindViewHolder(holder: LandmarkHolder, position: Int) {
         holder.binding.recyclerViewTextView.text = landmarkList.get(position).name
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context,DetailsActivity::class.java)
-            intent.putExtra("landmarkName",landmarkList.get(position))
+            val intent = Intent(holder.itemView.context, DetailsActivity::class.java)
+            // intent'ler buyuk veriyi yollamak icin iyi degil.
+            // bu yoldan da veri yollayabiliriz. Ama bu yol hic guvenli degil. Global veri old icinn.
+            //chosenLandmark=landmarkList.get(position)
+            //intent.putExtra("landmarkName", landmarkList.get(position))
+            MySingleton.chosenLandmark = landmarkList.get(position)
             holder.itemView.context.startActivity(intent)
         }
     }

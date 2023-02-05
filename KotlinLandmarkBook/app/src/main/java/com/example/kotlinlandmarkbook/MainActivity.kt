@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinlandmarkbook.databinding.ActivityDetailsBinding
 import com.example.kotlinlandmarkbook.databinding.ActivityMainBinding
 
+//var chosenLandmark: Landmark? = null
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var landmarkList: ArrayList<Landmark>
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         val anitkabir = Landmark("Anitkabir", "Turkiye", R.drawable.ankara)
         val eiffel = Landmark("Eiffel", "Fransa", R.drawable.paris)
         val collesium = Landmark("Collesium", "Italy", R.drawable.roma)
+
 
         landmarkList.add(pisa)
         landmarkList.add(clockTower)
