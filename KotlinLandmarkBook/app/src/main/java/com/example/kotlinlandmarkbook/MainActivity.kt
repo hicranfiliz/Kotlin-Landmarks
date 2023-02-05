@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinlandmarkbook.databinding.ActivityDetailsBinding
 import com.example.kotlinlandmarkbook.databinding.ActivityMainBinding
 
@@ -33,6 +35,13 @@ class MainActivity : AppCompatActivity() {
         landmarkList.add(eiffel)
         landmarkList.add(collesium)
 
+        // recycler view de farkli olarak adapter'in,xml'in alt alta mi yan yana mi olacagini soylemeiz gerekiyor.
+        // yan yanaya gridLayout al altaya linearLayout denir.
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val adapter = LandmarkAdapter(landmarkList)
+        binding.recyclerView.adapter = adapter
+
         // Adapter : layout ile data 'yi birbirine baglayan,
         // ayni zamanda listview ve recycler view gibi veri setlerini gosterecegimiz gorunumlere baglanip kullaniciya bunlari gostermeye yarayan yapi.
         // Adapter verimli yontemde ayri bir sinifa yazilabilir. Ya da listview gibi yontemde ayni yere yazilabilir.
@@ -40,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         // mapping: landmark objelerini landmark'larin isimlerine cevir.
 
         // asagida bu xml'in icinde sadece 1 metin gosterebiliyoruz demek. Gosterecgimiz metin landmarklist
+
+
+        /*
         val adapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
@@ -55,6 +67,8 @@ class MainActivity : AppCompatActivity() {
 
         // LISTVIEW RECYCLER VIEW KADAR VERIMLI DEGIL. HER VERI ICIN AYRI BIR XML OLUSTURUR. BIR XML'I
         // TEKRAR KULLANMAZ. RECYCLER VIEW TEKRAR KULLANDIGI ICIN DAHA VERIMLIDIR !!!!
+    */
+
     }
 
 }
