@@ -1,7 +1,9 @@
 package com.example.kotlinlandmarkbook
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.example.kotlinlandmarkbook.databinding.ActivityDetailsBinding
 import com.example.kotlinlandmarkbook.databinding.ActivityMainBinding
@@ -43,6 +45,16 @@ class MainActivity : AppCompatActivity() {
             android.R.layout.simple_list_item_1,
             landmarkList.map { landmark -> landmark.name })
         binding.listView.adapter = adapter
+
+        binding.listView.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                val intent = Intent(MainActivity@ this, DetailsActivity::class.java)
+                intent.putExtra("landmarkName", landmarkList.get(position).name)
+                startActivity(intent)
+            }
+
+        // LISTVIEW RECYCLER VIEW KADAR VERIMLI DEGIL. HER VERI ICIN AYRI BIR XML OLUSTURUR. BIR XML'I
+        // TEKRAR KULLANMAZ. RECYCLER VIEW TEKRAR KULLANDIGI ICIN DAHA VERIMLIDIR !!!!
     }
 
 }
