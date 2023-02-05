@@ -1,4 +1,7 @@
 package com.example.kotlinlandmarkbook
 
-class Landmark(val name: String, val cpuntry: String, val image: Int) {
+import java.io.Serializable
+
+// kendi olusturdugum landmark sinifinin serilestirileblir old soyluyorum..
+class Landmark(val name: String, val country: String, val image: Int) : Serializable {
 }
