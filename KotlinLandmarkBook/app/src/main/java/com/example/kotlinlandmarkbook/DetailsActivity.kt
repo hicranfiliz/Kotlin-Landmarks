@@ -16,14 +16,14 @@ class DetailsActivity : AppCompatActivity() {
 
         val intent = intent
         // casting: selectedLandmark'i al ve bunu Landmark objesi olara kaydet.
-        var selectedLandmak = intent.getSerializableExtra("landmarkName") //as Landmark
+        var selectedLandmak = intent.getStringExtra("landmarkName") as Landmark
         // bunlari serializable gonderdigim icin buraya da serializable gelir. Bu bizim istemedigimiz bir durumdur.
         // Cunku artik name degiskenine ulasamam.Ama ulasip bunlari  binding.text diyip gosterebiliyim.
         // Bu yuzden casting kullanacagiz..
 
-        //binding.nameText.text = selectedLandmak.name
-        //binding.countryName2.text = selectedLandmak.country
-        //binding.imageView.setImageResource(selectedLandmak.image)
+        binding.nameText.text = selectedLandmak.name
+        binding.countryName2.text = selectedLandmak.country
+        binding.imageView.setImageResource(selectedLandmak.image)
 
     }
 }
